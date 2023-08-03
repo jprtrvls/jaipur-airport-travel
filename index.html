@@ -473,7 +473,39 @@
   </footer>
   
   
- <script>
+<!-- Your existing HTML and CSS code -->
+
+<script>
+  // JavaScript for auto-scrolling the testimonials carousel
+  const testimonialContainer = document.querySelector(".testimonial-container");
+  const testimonials = document.querySelectorAll(".testimonial");
+  const numTestimonials = testimonials.length;
+  let currentIndex = 0;
+  const testimonialWidth = testimonials[0].offsetWidth;
+
+  function slideTestimonials() {
+    currentIndex = (currentIndex + 1) % numTestimonials;
+    const scrollAmount = -currentIndex * testimonialWidth;
+    testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
+  }
+
+  setInterval(slideTestimonials, 3000);
+
+  // JavaScript to toggle the mobile navigation menu
+  function toggleMobileMenu() {
+    const navigationLinks = document.querySelector(".navigation-links");
+    const menuIcon = document.querySelector(".menu-icon");
+    const isMobileMenuVisible = navigationLinks.classList.contains("show");
+      
+    if (isMobileMenuVisible) {
+      navigationLinks.classList.remove("show");
+      menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
+    } else {
+      navigationLinks.classList.add("show");
+      menuIcon.innerHTML = '<i class="fa-solid fa-times fa-xl" style="color: #ffffff;"></i>';
+    }
+  }
+
   // JavaScript to scroll to sections one by one and close mobile menu
   function scrollToSections() {
     const sections = document.querySelectorAll(".section");
@@ -502,46 +534,9 @@
   // Call scrollToSections() function to attach event listeners to navigation links
   scrollToSections();
 
-  // JavaScript for auto-scrolling the testimonials carousel
-  const testimonialContainer = document.querySelector(".testimonial-container");
-  const testimonialCards = document.querySelectorAll(".testimonial");
-  const numCards = testimonialCards.length;
-  const cardWidth = testimonialCards[0].offsetWidth;
-  let currentIndex = 0;
-  let scrollAmount = 0;
-
-  function slideTestimonials() {
-    currentIndex = (currentIndex + 1) % numCards;
-    scrollAmount = -currentIndex * cardWidth;
-    testimonialContainer.scrollTo({ left: scrollAmount, behavior: "smooth" });
-  }
-
-  let slideInterval = setInterval(slideTestimonials, 5000); // Slide every 5 seconds
-
-  // Jump back to the first testimonial after the last one
-  testimonialContainer.addEventListener("scroll", () => {
-    const containerScrollLeft = testimonialContainer.scrollLeft;
-    if (containerScrollLeft === 0 || containerScrollLeft === (numCards - 1) * cardWidth) {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(slideTestimonials, 5000);
-    }
-  });
-
-  // JavaScript to toggle the mobile navigation menu
-  function toggleMobileMenu() {
-    const navigationLinks = document.querySelector(".navigation-links");
-    const menuIcon = document.querySelector(".menu-icon");
-    const isMobileMenuVisible = navigationLinks.classList.contains("show");
-
-    if (isMobileMenuVisible) {
-      navigationLinks.classList.remove("show");
-      menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
-    } else {
-      navigationLinks.classList.add("show");
-      menuIcon.innerHTML = '<i class="fa-solid fa-times fa-xl" style="color: #ffffff;"></i>';
-    }
-  }
+  // Rest of the JavaScript code remains the same
 </script>
+
 
 
 </body>
