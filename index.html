@@ -140,11 +140,14 @@
     }
 
     /* Testimonials Carousel */
-    .testimonial-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    ..testimonial-container {
+  overflow: hidden;
+  height: 300px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: flex-start;
+  transition: transform 0.3s ease;
+}
+
 
     .testimonial {
       max-width: 500px;
