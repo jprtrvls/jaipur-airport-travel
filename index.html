@@ -542,7 +542,7 @@
     const navigationLinks = document.querySelector(".navigation-links");
     const menuIcon = document.querySelector(".menu-icon");
     const isMobileMenuVisible = navigationLinks.classList.contains("show");
-    
+
     if (isMobileMenuVisible) {
       navigationLinks.classList.remove("show");
       menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
@@ -578,22 +578,41 @@
   });
 
   // Call scrollToSection() function to attach event listeners to navigation links
+  scrollToSection("#home");
+  scrollToSection("#about");
+  scrollToSection("#testimonials");
+  scrollToSection("#services");
+  scrollToSection("#contact");
 
   // JavaScript for auto-scrolling the testimonials carousel
   const testimonialContainer = document.querySelector(".testimonial-container");
   const testimonialCards = document.querySelectorAll(".testimonial");
-
-  let currentIndex = 0;
   const cardWidth = testimonialCards[0].offsetWidth;
   const numCards = testimonialCards.length;
-  let scrollAmount = 0;
+  let currentIndex = 0;
+  let isTransitioning = false;
 
   function slideTestimonials() {
+    if (isTransitioning) return;
+
+    isTransitioning = true;
     currentIndex = (currentIndex + 1) % numCards;
-    scrollAmount = -currentIndex * cardWidth;
+    const scrollAmount = -currentIndex * cardWidth;
+    testimonialContainer.style.transition = "transform 1s ease";
     testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
   }
 
+  function handleTransitionEnd() {
+    isTransitioning = false;
+    testimonialContainer.style.transition = "none";
+    const scrollAmount = -currentIndex * cardWidth;
+    testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
+  }
+
+  // Attach transitionend event listener to the testimonial container
+  testimonialContainer.addEventListener("transitionend", handleTransitionEnd);
+
+  // Auto-slide the testimonials every 3 seconds
   setInterval(slideTestimonials, 3000);
 </script>
 
