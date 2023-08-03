@@ -432,7 +432,8 @@
     setInterval(slideServicesCarousel, 3000);
 
 
-   // JavaScript to toggle the mobile navigation menu
+ 
+    // JavaScript to toggle the mobile navigation menu
     function toggleMobileMenu() {
       const navigationLinks = document.querySelector(".navigation-links");
       const menuIcon = document.querySelector(".menu-icon");
@@ -452,18 +453,31 @@
       const sections = document.querySelectorAll(".section");
       const headerHeight = document.querySelector("header").offsetHeight;
       const navigationLinks = document.querySelector(".navigation-links");
-      
-      sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const scrollAmount = sectionTop + window.scrollY - headerHeight;
-        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
-        
-        // Close mobile menu after scrolling
-        navigationLinks.classList.remove("show");
-        const menuIcon = document.querySelector(".menu-icon");
-        menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
+
+      // Attach click event listener to each navigation link
+      const links = document.querySelectorAll(".navigation-links a");
+      links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent the default link behavior
+          const targetId = event.target.getAttribute("href"); // Get the target section ID
+          const targetSection = document.querySelector(targetId);
+          const sectionTop = targetSection.getBoundingClientRect().top;
+          const scrollAmount = sectionTop + window.scrollY - headerHeight;
+          window.scrollTo({ top: scrollAmount, behavior: "smooth" });
+
+          // Close mobile menu after clicking a link
+          navigationLinks.classList.remove("show");
+          const menuIcon = document.querySelector(".menu-icon");
+          menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
+        });
       });
     }
+
+    // Call scrollToSections() function to attach event listeners to navigation links
+    scrollToSections();
+
+    // Rest of the JavaScript code remains the same
+  
 
   </script>
 </body>
