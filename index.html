@@ -537,7 +537,24 @@
     scrollToSections();
 
     // Rest of the JavaScript code remains the same
-  
+
+    // JavaScript for auto-scrolling the testimonials carousel
+  const testimonialContainer = document.querySelector(".testimonial-container");
+  const testimonialCards = document.querySelectorAll(".testimonial");
+
+  let currentIndex = 0;
+  const cardWidth = testimonialCards[0].offsetWidth;
+  const numCards = testimonialCards.length;
+  const cardsPerPage = 3; // Number of testimonials visible at a time
+  let scrollAmount = 0;
+
+  function slideTestimonials() {
+    currentIndex = (currentIndex + 1) % numCards;
+    scrollAmount = -currentIndex * cardWidth * cardsPerPage;
+    testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
+  }
+
+  setInterval(slideTestimonials, 3000);
 
   </script>
 </body>
