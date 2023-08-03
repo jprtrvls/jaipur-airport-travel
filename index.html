@@ -205,8 +205,8 @@
     margin-bottom: 5px;
   }
 
- /* CSS for the "Contact Me" button */
-.cta-button.contact-me-button {
+/* CSS for the Book Now and Contact Me buttons */
+.cta-button {
   background-color: #3498db;
   color: white;
   padding: 12px 24px;
@@ -215,13 +215,12 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none; /* Remove underline from the link */
 }
 
-/* Update the icon in the "Contact Me" button */
-.cta-button.contact-me-button::before {
-  font-family: "Font Awesome Solid";
-  content: "\f095"; /* Unicode for phone icon */
-  margin-right: 10px;
+.cta-button:hover {
+  background-color: #2980b9;
 }
 
   /* Services Carousel */
