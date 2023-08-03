@@ -146,7 +146,6 @@
 .testimonial-container {
   display: flex;
   overflow: hidden;
-  scroll-behavior: smooth;
 }
 
 .testimonial {
@@ -159,6 +158,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease; /* Added transition property for smooth animation */
 }
+
+/* Hide scrollbar */
+.testimonial-container::-webkit-scrollbar {
+  display: none;
+  
   /* Add the media query for desktop */
   @media (min-width: 768px) {
     .testimonial {
