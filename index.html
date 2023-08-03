@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaipur Airport Tour and Travels</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-6ZcgrLplVr5V6jD+R+n1MFr19Ed6mo7bdgWw8HjI3GGWduELGk6gM5u3G+cV1P38GoISem5qFp9QKq9Etvapw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://kit.fontawesome.com/your_kit_code.js" crossorigin="anonymous"></script>
+  
+  <style>
+   /* CSS for header and footer */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #3498db;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Flexbox for responsive header layout */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.navigation-links {
+  display: flex;
+}
+
+.navigation-links a {
+  margin-left: 20px;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .menu-icon {
+    display: block;
+    margin-right: 20px;
+  }
+
+  .navigation-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #3498db;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .navigation-links a {
+    margin: 10px 0;
+  }
+
+  .show {
+    display: block;
+  }
+}
+
+footer {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* CSS for sections */
+.section {
+  padding: 50px;
+  text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .section {
+    padding: 30px;
+  }
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Background Image */
+body {
+  background-image: url("background.jpg");
+  background-size: cover;
+}
+
+/* Testimonials Carousel */
+.testimonial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial {
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS for contact section */
+#contact {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#contact h2 {
+  margin-bottom: 20px;
+}
+
+.contact-info-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-info-box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  width: 200px;
+}
+
+.contact-info-box h3 {
+  font-size: 18px;
+}
+
+.contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.contact-info li {
+  margin-bottom: 5px;
+}
+
+#contact .cta-button {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact .cta-button:hover {
+  background-color: #2980b9;
+}
+
+/* Call to Action Button */
+.cta-button {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #2980b9;
+}
+
+/* Services Carousel */
+.services-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.car-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+  scroll-snap-align: center;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Three-dot menu icon */
+.three-dots-container {
+  display: block;
+  cursor: pointer;
+}
+
+.three-dots-icon {
+  background-color: #fff;
+  width: 30px;
+  height: 5px;
+  margin: 6px 0;
+  border-radius: 5px;
+}
+/* Adjust the size of the SVG icons in the footer */
+.footer-icon {
+  width: 60px; /* Adjust the width as needed */
+  height: 60px; /* Adjust the height as needed */
+}
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Jaipur Airport Tour and Travels</h1>
+      <!-- Hamburger menu icon -->
+      <div class="menu-icon" onclick="scrollToSections()">
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+      <!-- Navigation links -->
+      <nav class="navigation-links" id="navigationLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  
+  
+
+<section id="home" class="section">
+  <h2>Home</h2>
+  <!-- Add photo of cab driver here -->
+  <img src="driver_photo.jpg" alt="Driver Photo" style="width: 300px; height: 300px; border-radius: 50%;">
+  <p>🚗 Welcome aboard! Let's embark on a memorable journey with Jaipur Airport Tour and Travels. 🌟</p>
+  <p>Meet our expert driver, Pushpendra Chaudhary, who is dedicated to providing safe, comfortable, and reliable transportation services.</p>
+  <!-- Book Now button with call link -->
+  <a href="tel:+919694346362" class="cta-button">Book Now</a>
+</section>
+<section id="about" class="section">
+  <h2>About</h2>
+  <!-- Add photo of cab driver here -->
+  <img src="driver_photo.jpg" alt="Driver Photo" style="width: 300px; height: 300px; border-radius: 50%;">
+  <p>Hi there! I'm Pushpendra Chaudhary, your friendly and reliable cab driver at Jaipur Airport Tour and Travels. 🚕</p>
+  <p>I have been serving as a cab driver for many years, and I take great pride in providing top-notch transportation services to my valued customers. My utmost priority is to ensure your safety, comfort, and satisfaction throughout your journey.</p>
+  <p>With extensive knowledge of the city's routes and attractions, I can take you to your destination swiftly and efficiently. Whether it's a leisurely city tour or a time-bound business trip, you can count on me for a smooth and pleasant ride.</p>
+  <p>My dedication to excellence and punctuality has earned me a loyal customer base and numerous positive reviews from satisfied travelers. Your trust and satisfaction are what drive me to continue delivering the best possible service.</p>
+  <p>So, sit back, relax, and enjoy the ride with Jaipur Airport Tour and Travels. I look forward to being your personal driver and making your travel experience exceptional. 🌟</p>
+</section>
+
+
+  <section id="services" class="section">
+    <h2>Services</h2>
+    <div class="services-container">
+      <!-- Add sliding photos of cars with descriptions -->
+      <div class="service-card">
+        <img src="car1.jpg" alt="Car 1" class="car-image">
+        <h3>Airport Transfer</h3>
+        <p>Book our reliable cab service for convenient and hassle-free airport transfers. We ensure timely pick-up and drop-off, so you never miss a flight or wait at the airport.</p>
+      </div>
+      <div class="service-card">
+        <img src="car2.jpg" alt="Car 2" class="car-image">
+        <h3>City Tour</h3>
+        <p>Explore the city's top attractions with our guided city tour service. Our knowledgeable drivers will take you to the best spots, ensuring an enjoyable and memorable experience.</p>
+      </div>
+      <div class="service-card">
+        <img src="car3.jpg" alt="Car 3" class="car-image">
+        <h3>Business Travel</h3>
+        <p>For your business trips, rely on our premium cab service. We offer comfort and privacy, ensuring you arrive at your business meetings on time and in style.</p>
+      </div>
+      <div class="service-card">
+        <img src="car4.jpg" alt="Car 4" class="car-image">
+        <h3>Custom Tours</h3>
+        <p>Need a customized tour? We've got you covered. Plan your own itinerary and let us take care of the transportation. Enjoy a personalized tour experience.</p>
+      </div>
+      <!-- Add more images and descriptions as needed -->
+    </div>
+  </section>
+  
+
+  <section id="testimonials" class="section">
+    <h2>Testimonials</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <blockquote>
+          "I had a fantastic experience with Pushpendra's cab service. The ride was smooth, and he made sure I reached my destination on time. His friendly nature and knowledge of the city's shortcuts impressed me. I highly recommend his services!"
+        </blockquote>
+        <h3>Vishal</h3>
+        <p>Jaipur</p>
+      </div>
+      <div class="testimonial">
+        <blockquote>
+          "Pushpendra is my go-to cab driver whenever I'm in Jaipur. His punctuality and professionalism are commendable. I never have to worry about getting late for my appointments. I truly appreciate his dedication to providing exceptional service."
+        </blockquote>
+        <h3>Rahul</h3>
+        <p>Jaipur</p>
+      </div>
+      <div class="testimonial">
+        <blockquote>
+          "I've used Pushpendra's cab service multiple times, and I must say he exceeds my expectations every time. He goes the extra mile to ensure his passengers are comfortable and satisfied. His polite demeanor and safe driving make him the best cab driver in Jaipur."
+        </blockquote>
+        <h3>Lavesh</h3>
+        <p>Jaipur</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <!-- Add contact information of cab driver here -->
+    <div class="contact-info-container">
+      <div class="contact-info-box">
+        <h3>Phone Numbers</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-phone"></i> +91-9694346362</li>
+          <li><i class="fas fa-phone"></i> +91-8504828180</li>
+          <li><i class="fas fa-phone"></i> +91-9529158811</li>
+        </ul>
+      </div>
+      <div class="contact-info-box">
+        <h3>Destinations</h3>
+        <p>Pratap Nagar</p>
+        <p>Jaipur Airport</p>
+      </div>
+    </div>
+    <!-- Contact Me button with call link -->
+    <a href="tel:+919694346362" class="cta-button">Contact Me</a>
+  </section>
+  
+  
+  
+
+
+  <footer>
+    <!-- Instagram Icon -->
+    <a href="https://instagram.com/jaipur_airport_treavels?igshid=MzNlNGNkZWQ4Mg==/" target="_blank">
+      <img src="instagram_icon.svg" alt="Instagram" class="footer-icon">
+    </a>
+    <!-- WhatsApp Icon -->
+    <a href="https://wa.me/+91-8504828180" target="_blank">
+      <img src="whatsapp_icon.svg" alt="WhatsApp" class="footer-icon">
+    </a>
+    <!-- Call Icon -->
+    <a href="tel:+919694346362">
+      <img src="call_icon.svg" alt="Call" class="footer-icon">
+    </a>
+  </footer>
+  
+  
+  
+  
+  <script>
+    // JavaScript to scroll to sections one by one
+    function scrollToSections() {
+      const sections = document.querySelectorAll(".section");
+      const headerHeight = document.querySelector("header").offsetHeight;
+      
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const scrollAmount = sectionTop + window.scrollY - headerHeight;
+        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
+      });
+    }
+
+    // JavaScript for auto-scrolling the services carousel
+    const container = document.querySelector(".services-container");
+    let scrollAmount = 0;
+    const scrollIncrement = 300;
+    const scrollMax = container.scrollWidth - container.clientWidth;
+
+    function slideServicesCarousel() {
+      scrollAmount += scrollIncrement;
+      if (scrollAmount > scrollMax) {
+        scrollAmount = 0;
+      }
+      container.scrollTo(scrollAmount, 0);
+    }
+
+    setInterval(slideServicesCarousel, 3000);
+  </script>
+</body>
+
+</html>
