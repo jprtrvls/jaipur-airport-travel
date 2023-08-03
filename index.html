@@ -139,13 +139,13 @@
       background-size: cover;
     }
 
-  /* Add this CSS to adjust the testimonial boxes */
+/* Add this CSS to adjust the testimonial boxes */
   .testimonial-container {
     display: flex;
-    overflow-x: auto;
+    overflow: hidden; /* Hide overflowing testimonials to create the circle effect */
     scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    max-width: 100%;
+    width: fit-content; /* Adjust the width to fit the content of the testimonials */
+    margin: 0 auto; /* Center the testimonial container */
   }
 
   .testimonial {
@@ -156,12 +156,23 @@
     background-color: #f1f1f1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     scroll-snap-align: start;
+    animation: testimonialAnimation 20s linear infinite; /* Add the animation for rotation */
   }
 
   /* Add a CSS media query for responsive design */
   @media (min-width: 768px) {
     .testimonial {
       flex: 0 0 300px; /* Adjust the width of each testimonial box for desktop */
+    }
+  }
+
+  /* CSS Animation for continuous rotation */
+  @keyframes testimonialAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% + 20px)); /* Adjust the distance for each testimonial */
     }
   }
 
