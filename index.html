@@ -535,7 +535,6 @@
     </div>
   </footer>
   
-  
 <script>
   // JavaScript to toggle the mobile navigation menu
   function toggleMobileMenu() {
@@ -584,18 +583,18 @@
   scrollToSection("#services");
   scrollToSection("#contact");
 
-  // JavaScript for auto-scrolling the testimonials carousel
+  // JavaScript for manual sliding of testimonials
   const testimonialContainer = document.querySelector(".testimonial-container");
   const testimonialCards = document.querySelectorAll(".testimonial");
   const cardWidth = testimonialCards[0].offsetWidth;
   const numCards = testimonialCards.length;
   let currentIndex = 0;
-  let isTransitioning = false;
+  let isSliding = false;
 
-  function slideTestimonials() {
-    if (isTransitioning) return;
+  function slideNextTestimonial() {
+    if (isSliding) return;
 
-    isTransitioning = true;
+    isSliding = true;
     currentIndex = (currentIndex + 1) % numCards;
     const scrollAmount = -currentIndex * cardWidth;
     testimonialContainer.style.transition = "transform 1s ease";
@@ -603,7 +602,7 @@
   }
 
   function handleTransitionEnd() {
-    isTransitioning = false;
+    isSliding = false;
     testimonialContainer.style.transition = "none";
     const scrollAmount = -currentIndex * cardWidth;
     testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
@@ -612,8 +611,8 @@
   // Attach transitionend event listener to the testimonial container
   testimonialContainer.addEventListener("transitionend", handleTransitionEnd);
 
-  // Auto-slide the testimonials every 3 seconds
-  setInterval(slideTestimonials, 3000);
+  // Auto-slide the testimonials manually
+  setInterval(slideNextTestimonial, 3000);
 </script>
 
 
