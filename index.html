@@ -414,18 +414,7 @@
   
   
   <script>
-    // JavaScript to scroll to sections one by one
-    function scrollToSections() {
-      const sections = document.querySelectorAll(".section");
-      const headerHeight = document.querySelector("header").offsetHeight;
-      
-      sections.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const scrollAmount = sectionTop + window.scrollY - headerHeight;
-        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
-      });
-    }
-
+    
     // JavaScript for auto-scrolling the services carousel
     const container = document.querySelector(".services-container");
     let scrollAmount = 0;
