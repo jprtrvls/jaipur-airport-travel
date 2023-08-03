@@ -441,9 +441,21 @@
     }
 
     setInterval(slideServicesCarousel, 3000);
+
+
+    // JavaScript to toggle the mobile navigation menu
     function toggleMobileMenu() {
       const navigationLinks = document.querySelector(".navigation-links");
-      navigationLinks.classList.toggle("show");
+      const menuIcon = document.querySelector(".menu-icon");
+      const isMobileMenuVisible = navigationLinks.classList.contains("show");
+      
+      if (isMobileMenuVisible) {
+        navigationLinks.classList.remove("show");
+        menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
+      } else {
+        navigationLinks.classList.add("show");
+        menuIcon.innerHTML = '<i class="fa-solid fa-times fa-xl" style="color: #ffffff;"></i>';
+      }
     }
   </script>
 </body>
