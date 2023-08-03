@@ -142,26 +142,34 @@
 
   }
 
-/* CSS for testimonials section */
-.testimonial-container {
-  display: flex;
-  overflow: hidden;
-}
+<style>
+  /* Add this CSS to adjust the testimonial boxes */
+  .testimonial-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    max-width: 100%;
+  }
 
-.testimonial {
-  flex: 0 0 100%; /* Each testimonial takes full width of the container */
-  max-width: 100%;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f1f1f1;
-  margin-right: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease; /* Added transition property for smooth animation */
-}
+  .testimonial {
+    flex: 0 0 calc(100% - 40px); /* Adjust the width of each testimonial box for mobile */
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+  }
 
-/* Hide scrollbar */
-.testimonial-container::-webkit-scrollbar {
-  display: none;
+  /* Add a CSS media query for responsive design */
+  @media (min-width: 768px) {
+    .testimonial {
+      flex: 0 0 300px; /* Adjust the width of each testimonial box for desktop */
+    }
+  }
+</style>
+
   
   
     /* CSS for contact section */
