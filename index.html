@@ -443,7 +443,7 @@
     setInterval(slideServicesCarousel, 3000);
 
 
-    // JavaScript to toggle the mobile navigation menu
+   // JavaScript to toggle the mobile navigation menu
     function toggleMobileMenu() {
       const navigationLinks = document.querySelector(".navigation-links");
       const menuIcon = document.querySelector(".menu-icon");
@@ -457,6 +457,25 @@
         menuIcon.innerHTML = '<i class="fa-solid fa-times fa-xl" style="color: #ffffff;"></i>';
       }
     }
+
+    // JavaScript to scroll to sections one by one and close mobile menu
+    function scrollToSections() {
+      const sections = document.querySelectorAll(".section");
+      const headerHeight = document.querySelector("header").offsetHeight;
+      const navigationLinks = document.querySelector(".navigation-links");
+      
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const scrollAmount = sectionTop + window.scrollY - headerHeight;
+        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
+        
+        // Close mobile menu after scrolling
+        navigationLinks.classList.remove("show");
+        const menuIcon = document.querySelector(".menu-icon");
+        menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
+      });
+    }
+
   </script>
 </body>
 
