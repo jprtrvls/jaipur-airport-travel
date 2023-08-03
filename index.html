@@ -593,10 +593,10 @@
   let isSliding = false;
 
   function slideNextTestimonial() {
-    if (isSliding) return;
+    if (isSliding || currentIndex === numCards - 1) return;
 
     isSliding = true;
-    currentIndex = (currentIndex + 1) % numCards;
+    currentIndex++;
     const scrollAmount = -currentIndex * cardWidth;
     testimonialContainer.style.transition = "transform 1s ease";
     testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
@@ -605,8 +605,11 @@
   function handleTransitionEnd() {
     isSliding = false;
     testimonialContainer.style.transition = "none";
-    const scrollAmount = -currentIndex * cardWidth;
-    testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
+    if (currentIndex === numCards - 1) {
+      currentIndex = 0;
+      const scrollAmount = -currentIndex * cardWidth;
+      testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
+    }
   }
 
   // Attach transitionend event listener to the testimonial container
@@ -615,7 +618,6 @@
   // Auto-slide the testimonials manually
   setInterval(slideNextTestimonial, 3000);
 </script>
-
 
 
 
