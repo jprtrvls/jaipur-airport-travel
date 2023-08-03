@@ -535,6 +535,7 @@
     </div>
   </footer>
   
+
 <script>
   // JavaScript to toggle the mobile navigation menu
   function toggleMobileMenu() {
@@ -586,7 +587,7 @@
   // JavaScript for manual sliding of testimonials
   const testimonialContainer = document.querySelector(".testimonial-container");
   const testimonialCards = document.querySelectorAll(".testimonial");
-  const cardWidth = testimonialCards[0].offsetWidth;
+  const cardWidth = testimonialCards[0].offsetWidth + parseFloat(getComputedStyle(testimonialCards[0]).marginLeft) * 2;
   const numCards = testimonialCards.length;
   let currentIndex = 0;
   let isSliding = false;
