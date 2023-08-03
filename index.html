@@ -139,7 +139,7 @@
       background-size: cover;
     }
 
-    /* Add this CSS to adjust the testimonial boxes */
+  /* Add this CSS to adjust the testimonial boxes */
   .testimonial-container {
     display: flex;
     overflow-x: auto;
@@ -149,7 +149,7 @@
   }
 
   .testimonial {
-    flex: 0 0 300px; /* Adjust the width of each testimonial box as needed */
+    flex: 0 0 calc(100% - 40px); /* Adjust the width of each testimonial box for mobile */
     padding: 20px;
     margin-right: 20px;
     border-radius: 10px;
@@ -159,10 +159,9 @@
   }
 
   /* Add a CSS media query for responsive design */
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     .testimonial {
-      flex: 0 0 calc(100% - 40px); /* Adjust the width of each testimonial box for mobile */
-      margin-bottom: 20px;
+      flex: 0 0 300px; /* Adjust the width of each testimonial box for desktop */
     }
   }
 
