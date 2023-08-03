@@ -537,7 +537,6 @@
   
 
 <script>
-  // JavaScript to toggle the mobile navigation menu
   function toggleMobileMenu() {
     const navigationLinks = document.querySelector(".navigation-links");
     const menuIcon = document.querySelector(".menu-icon");
@@ -552,7 +551,6 @@
     }
   }
 
-  // JavaScript to scroll to sections one by one and close mobile menu
   function scrollToSection(targetId) {
     const headerHeight = document.querySelector("header").offsetHeight;
     const navigationLinks = document.querySelector(".navigation-links");
@@ -561,30 +559,26 @@
     const scrollAmount = sectionTop + window.scrollY - headerHeight;
     window.scrollTo({ top: scrollAmount, behavior: "smooth" });
 
-    // Close mobile menu after clicking a link
     navigationLinks.classList.remove("show");
     const menuIcon = document.querySelector(".menu-icon");
     menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
   }
 
-  // Attach click event listener to each navigation link
   const links = document.querySelectorAll(".navigation-links a");
   links.forEach((link) => {
     link.addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent the default link behavior
-      const targetId = event.target.getAttribute("href"); // Get the target section ID
+      event.preventDefault();
+      const targetId = event.target.getAttribute("href");
       scrollToSection(targetId);
     });
   });
 
-  // Call scrollToSection() function to attach event listeners to navigation links
   scrollToSection("#home");
   scrollToSection("#about");
   scrollToSection("#testimonials");
   scrollToSection("#services");
   scrollToSection("#contact");
 
-  // JavaScript for manual sliding of testimonials
   const testimonialContainer = document.querySelector(".testimonial-container");
   const testimonialCards = document.querySelectorAll(".testimonial");
   const cardWidth = testimonialCards[0].offsetWidth + parseFloat(getComputedStyle(testimonialCards[0]).marginLeft) * 2;
@@ -608,13 +602,13 @@
     slideToIndex(currentIndex + 1);
   }
 
-  // Attach click event listeners to the arrow buttons
   const prevButton = document.querySelector(".testimonial-prev");
   const nextButton = document.querySelector(".testimonial-next");
   prevButton.addEventListener("click", handlePrevSlide);
   nextButton.addEventListener("click", handleNextSlide);
-</script>
 
+  clearInterval(autoSlideInterval);
+</script>
 
 
 
