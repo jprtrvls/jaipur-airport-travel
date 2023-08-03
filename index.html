@@ -214,6 +214,7 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: inline-block;
   }
 
   #contact .cta-button:hover {
@@ -255,8 +256,26 @@
     margin: 6px 0;
     border-radius: 5px;
   }
- 
+
+  /* Container for all sections */
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Adjust section spacing */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  /* Add a CSS media query for responsive design */
+  @media (max-width: 768px) {
+    /* ... Your existing responsive styles ... */
+  }
 </style>
+
 
   
 </head>
