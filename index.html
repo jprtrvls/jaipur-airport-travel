@@ -8,140 +8,126 @@
 
   <script src="https://kit.fontawesome.com/09f74b2c0e.js" crossorigin="anonymous"></script>
 
-  
-  <style>
-    /* CSS for header and footer */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+  /* CSS for header and footer */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("background.jpg");
+    background-size: cover;
+    padding-bottom: 60px; /* Adjust the value to match the height of your footer */
+  }
 
-    header {
-      background-color: #3498db;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+  header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-    .header-icon,
-    .footer-icon {
-      font-size: 30px; /* Increase the font size as needed */
-    }
+  .header-icon,
+  .footer-icon {
+    font-size: 30px; /* Increase the font size as needed */
+  }
 
-    /* Flexbox for responsive header layout */
+  /* Flexbox for responsive header layout */
+  .header-container {
+    display: flex;
+    justify-content: space-between; /* Added to ensure space between hamburger icon and links */
+    align-items: center;
+  }
+
+  /* Hamburger Menu */
+  .menu-icon {
+    display: none; /* Hidden by default for desktop view */
+    cursor: pointer;
+  }
+
+  .navigation-links {
+    display: flex;
+  }
+
+  .navigation-links a {
+    margin-left: 20px;
+  }
+
+  /* Responsive styles for mobile */
+  @media (max-width: 768px) {
     .header-container {
-      display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Hamburger Menu */
     .menu-icon {
-      display: flex;
-      cursor: pointer;
+      display: block; /* Show the hamburger icon for mobile */
+      margin-right: 30px;
     }
 
     .navigation-links {
-      display: flex;
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #3498db;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .navigation-links a {
-      margin-left: 20px;
+      margin: 10px 0;
     }
 
-    /* Responsive styles for mobile */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .menu-icon {
-        display: block;
-        margin-right: 30px;
-      }
-
-      .navigation-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #3498db;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .navigation-links a {
-        margin: 10px 0;
-      }
-
-      .navigation-links.show {
-        display: flex;
-      }
-    }
-
-    footer {
-      background-color: #3498db;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      
-    }
-
-    footer div {
+    .navigation-links.show {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 100px;
     }
-
-    .footer-icon {
-      color: white;
-    }
-    body {
-      padding-bottom: 60px; /* Adjust the value to match the height of your footer */
-    }
-
-    /* CSS for sections */
-    .section {
-      padding: 50px;
-      text-align: center;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      .section {
-        padding: 30px;
-      }
-    }
-
-    /* Typography */
-    h1, h2, h3 {
-      font-family: 'Arial', sans-serif;
-    }
-
-    body {
-      font-family: 'Arial', sans-serif;
-    }
-
-    /* Background Image */
-    body {
-      background-image: url("background.jpg");
-      background-size: cover;
-    }
-
-
   }
 
+  footer {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .footer-icon {
+    font-size: 32px; /* Adjust the font size as needed */
+  }
+
+  /* CSS for sections */
+  .section {
+    padding: 50px;
+    text-align: center;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .section {
+      padding: 30px;
+    }
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3 {
+    font-family: 'Arial', sans-serif;
+  }
 
   /* Add this CSS to adjust the testimonial boxes */
   .testimonial-container {
@@ -169,119 +155,98 @@
     }
   }
 
+  /* CSS for contact section */
+  #contact {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  #contact h2 {
+    margin-bottom: 20px;
+  }
+
+  .contact-info-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact-info-box {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+  }
+
+  .contact-info-box h3 {
+    font-size: 18px;
+  }
+
+  .contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .contact-info li {
+    margin-bottom: 5px;
+  }
+
+  #contact .cta-button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #contact .cta-button:hover {
+    background-color: #2980b9;
+  }
+
+  /* Services Carousel */
+  .services-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+
+  .car-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+    scroll-snap-align: center;
+  }
+
+  /* Hide scrollbar */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Three-dot menu icon */
+  .three-dots-container {
+    display: block;
+    cursor: pointer;
+  }
+
+  .three-dots-icon {
+    background-color: #fff;
+    width: 30px;
+    height: 5px;
+    margin: 6px 0;
+    border-radius: 5px;
+  }
+</style>
+
   
-  
-    /* CSS for contact section */
-    #contact {
-      margin-top: 50px;
-      text-align: center;
-    }
-
-    #contact h2 {
-      margin-bottom: 20px;
-    }
-
-    .contact-info-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .contact-info-box {
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      text-align: center;
-      width: 200px;
-    }
-
-    .contact-info-box h3 {
-      font-size: 18px;
-    }
-
-    .contact-info {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-    }
-
-    .contact-info li {
-      margin-bottom: 5px;
-    }
-
-    #contact .cta-button {
-      background-color: #3498db;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    #contact .cta-button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Call to Action Button */
-    .cta-button {
-      background-color: #3498db;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #2980b9;
-    }
-
-    /* Services Carousel */
-    .services-container {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-    }
-
-    .car-image {
-      width: 300px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-right: 10px;
-      scroll-snap-align: center;
-    }
-
-    /* Hide scrollbar */
-    ::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Three-dot menu icon */
-    .three-dots-container {
-      display: block;
-      cursor: pointer;
-    }
-
-    .three-dots-icon {
-      background-color: #fff;
-      width: 30px;
-      height: 5px;
-      margin: 6px 0;
-      border-radius: 5px;
-    }
-
-    /* Adjust the size of the SVG icons in the footer */
-    .footer-icon {
-      font-size: 32px; /* Adjust the font size as needed */
-    }
-  </style>
 </head>
 
 <body>
