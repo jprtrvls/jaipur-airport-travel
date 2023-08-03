@@ -540,12 +540,12 @@
 
     // Rest of the JavaScript code remains the same
 
-    // JavaScript for auto-scrolling the testimonials carousel
+   // JavaScript for auto-scrolling the testimonials carousel
   const testimonialContainer = document.querySelector(".testimonial-container");
   const testimonialCards = document.querySelectorAll(".testimonial");
 
   let currentIndex = 0;
-  const cardWidth = testimonialCards[0].offsetWidth;
+  const cardWidth = testimonialCards[0].offsetWidth + 20; // Include margin-right
   const numCards = testimonialCards.length;
   const cardsPerPage = 3; // Number of testimonials visible at a time
   let scrollAmount = 0;
@@ -557,7 +557,6 @@
   }
 
   setInterval(slideTestimonials, 3000);
-
   </script>
 </body>
 
