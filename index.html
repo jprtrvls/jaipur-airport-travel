@@ -590,33 +590,29 @@
   const cardWidth = testimonialCards[0].offsetWidth + parseFloat(getComputedStyle(testimonialCards[0]).marginLeft) * 2;
   const numCards = testimonialCards.length;
   let currentIndex = 0;
-  let isSliding = false;
 
-  function slideNextTestimonial() {
-    if (isSliding || currentIndex === numCards - 1) return;
+  function slideToIndex(index) {
+    if (index < 0 || index >= numCards) return;
 
-    isSliding = true;
-    currentIndex++;
+    currentIndex = index;
     const scrollAmount = -currentIndex * cardWidth;
     testimonialContainer.style.transition = "transform 1s ease";
     testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
   }
 
-  function handleTransitionEnd() {
-    isSliding = false;
-    testimonialContainer.style.transition = "none";
-    if (currentIndex === numCards - 1) {
-      currentIndex = 0;
-      const scrollAmount = -currentIndex * cardWidth;
-      testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
-    }
+  function handlePrevSlide() {
+    slideToIndex(currentIndex - 1);
   }
 
-  // Attach transitionend event listener to the testimonial container
-  testimonialContainer.addEventListener("transitionend", handleTransitionEnd);
+  function handleNextSlide() {
+    slideToIndex(currentIndex + 1);
+  }
 
-  // Auto-slide the testimonials manually
-  setInterval(slideNextTestimonial, 3000);
+  // Attach click event listeners to the arrow buttons
+  const prevButton = document.querySelector(".testimonial-prev");
+  const nextButton = document.querySelector(".testimonial-next");
+  prevButton.addEventListener("click", handlePrevSlide);
+  nextButton.addEventListener("click", handleNextSlide);
 </script>
 
 
