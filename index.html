@@ -472,12 +472,65 @@
   
   
  <script>
+  // JavaScript to scroll to sections one by one and close mobile menu
+  function scrollToSections() {
+    const sections = document.querySelectorAll(".section");
+    const headerHeight = document.querySelector("header").offsetHeight;
+    const navigationLinks = document.querySelector(".navigation-links");
+
+    // Attach click event listener to each navigation link
+    const links = document.querySelectorAll(".navigation-links a");
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        const targetId = event.target.getAttribute("href"); // Get the target section ID
+        const targetSection = document.querySelector(targetId);
+        const sectionTop = targetSection.getBoundingClientRect().top;
+        const scrollAmount = sectionTop + window.scrollY - headerHeight;
+        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
+
+        // Close mobile menu after clicking a link
+        navigationLinks.classList.remove("show");
+        const menuIcon = document.querySelector(".menu-icon");
+        menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
+      });
+    });
+  }
+
+  // Call scrollToSections() function to attach event listeners to navigation links
+  scrollToSections();
+
+  // JavaScript for auto-scrolling the testimonials carousel
+  const testimonialContainer = document.querySelector(".testimonial-container");
+  const testimonialCards = document.querySelectorAll(".testimonial");
+  const numCards = testimonialCards.length;
+  const cardWidth = testimonialCards[0].offsetWidth;
+  let currentIndex = 0;
+  let scrollAmount = 0;
+
+  function slideTestimonials() {
+    currentIndex = (currentIndex + 1) % numCards;
+    scrollAmount = -currentIndex * cardWidth;
+    testimonialContainer.scrollTo({ left: scrollAmount, behavior: "smooth" });
+  }
+
+  let slideInterval = setInterval(slideTestimonials, 5000); // Slide every 5 seconds
+
+  // Jump back to the first testimonial after the last one
+  testimonialContainer.addEventListener("scroll", () => {
+    const containerScrollLeft = testimonialContainer.scrollLeft;
+    if (containerScrollLeft === 0 || containerScrollLeft === (numCards - 1) * cardWidth) {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(slideTestimonials, 5000);
+    }
+  });
+
   // JavaScript to toggle the mobile navigation menu
   function toggleMobileMenu() {
     const navigationLinks = document.querySelector(".navigation-links");
     const menuIcon = document.querySelector(".menu-icon");
     const isMobileMenuVisible = navigationLinks.classList.contains("show");
-    
+
     if (isMobileMenuVisible) {
       navigationLinks.classList.remove("show");
       menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
@@ -486,50 +539,6 @@
       menuIcon.innerHTML = '<i class="fa-solid fa-times fa-xl" style="color: #ffffff;"></i>';
     }
   }
-
-  // JavaScript to scroll to sections one by one and close mobile menu
-  function scrollToSection(targetId) {
-    const headerHeight = document.querySelector("header").offsetHeight;
-    const navigationLinks = document.querySelector(".navigation-links");
-    const targetSection = document.querySelector(targetId);
-    const sectionTop = targetSection.getBoundingClientRect().top;
-    const scrollAmount = sectionTop + window.scrollY - headerHeight;
-    window.scrollTo({ top: scrollAmount, behavior: "smooth" });
-
-    // Close mobile menu after clicking a link
-    navigationLinks.classList.remove("show");
-    const menuIcon = document.querySelector(".menu-icon");
-    menuIcon.innerHTML = '<i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>';
-  }
-
-  // Attach click event listener to each navigation link
-  const links = document.querySelectorAll(".navigation-links a");
-  links.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent the default link behavior
-      const targetId = event.target.getAttribute("href"); // Get the target section ID
-      scrollToSection(targetId);
-    });
-  });
-
-  // Call scrollToSection() function to attach event listeners to navigation links
-
-  // JavaScript for auto-scrolling the testimonials carousel
-  const testimonialContainer = document.querySelector(".testimonial-container");
-  const testimonialCards = document.querySelectorAll(".testimonial");
-
-  let currentIndex = 0;
-  const cardWidth = testimonialCards[0].offsetWidth;
-  const numCards = testimonialCards.length;
-  let scrollAmount = 0;
-
-  function slideTestimonials() {
-    currentIndex = (currentIndex + 1) % numCards;
-    scrollAmount = -currentIndex * cardWidth;
-    testimonialContainer.style.transform = `translateX(${scrollAmount}px)`;
-  }
-
-  setInterval(slideTestimonials, 3000);
 </script>
 
 
