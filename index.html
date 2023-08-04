@@ -311,15 +311,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     border: 0;
   }
 
   /* Adjust map size for phones (screen width <= 600px) */
   @media screen and (max-width: 600px) {
-    .map-container {
-      padding-bottom: 40%; /* Adjust this value to make the map even smaller */
+    .map-container iframe {
+      width: 100%; /* Set the width to 100% to make it fit the container */
+      height: 200px; /* Adjust this value to make the map even smaller */
     }
   }
 </style>
